@@ -7,11 +7,11 @@ n, m = 0, 0
 
 def calc_presum():
     global table, presum
-    for i in range(2, n+2):
+    for i in range(1, n+1):
         isum = 0
-        for j in range(2, n+2):
-            isum += table[i-1][j-1]
-            presum[i-1][j-1] = presum[i-2][j-1] + isum
+        for j in range(1, n+1):
+            isum += table[i][j]
+            presum[i][j] = presum[i-1][j] + isum
 
 def solution():
     x1, y1, x2, y2 = map(int, input().split())
