@@ -15,13 +15,13 @@ def dfs(y, x, team):
     visited[y][x] = True
     
     cnt = 1 # self
-    if y+1 < m and data[y+1][x] == team and not visited[y+1][x]: # bottom
+    if y+1 < m and not visited[y+1][x]: # bottom
         cnt += dfs(y+1, x, team)
-    if x+1 < n and data[y][x+1] == team and not visited[y][x+1]: # right
+    if x+1 < n and not visited[y][x+1]: # right
         cnt += dfs(y, x+1, team)
-    if y > 0 and data[y-1][x] == team and not visited[y-1][x]: # top
+    if y > 0 and not visited[y-1][x]: # top
         cnt += dfs(y-1, x, team)
-    if x > 0 and data[y][x-1] == team and not visited[y][x-1]: # left
+    if x > 0 and not visited[y][x-1]: # left
         cnt += dfs(y, x-1, team)
     
     return cnt
