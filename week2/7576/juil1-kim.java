@@ -23,26 +23,21 @@ public class BJ7576 {
         N = Integer.parseInt(str[1]);
         int[][] map = new int[N][M];
 
+        Queue<Point> q = new LinkedList<>();
+
         for (int i = 0; i < N; i++) {
             str = br.readLine().split(" ");
             for (int j = 0; j < M; j++) {
                 map[i][j] = Integer.parseInt(str[j]);
-            }
-        }
-        bfs(map, N, M);
-    } // main
-
-    public static void bfs(int[][] map, int N, int M) {
-        Queue<Point> q = new LinkedList<>();
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
                 if (map[i][j] == 1)
                     // 큐에 익은 토마토 위치 저장.
                     q.add(new Point(i, j));
             }
         }
+        bfs(map, q);
+    } // main
 
+    public static void bfs(int[][] map, Queue<Point> q) {
         while (!q.isEmpty()) {
             Point p = q.poll(); // 현재 위치
             for (int i = 0; i < 4; i++) {
