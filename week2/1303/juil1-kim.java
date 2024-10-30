@@ -59,11 +59,13 @@ public class BJ1303 {
         visited[y][x] = true;
         sum++;
         for (int i = 0; i < 4; i++) {
+            int ny = y + dy[i];
+            int nx = x + dx[i];
             // 유효한 map 범위 내에 있는지 확인.
-            if (y+dy[i] >= 0 && y+dy[i] < M && x+dx[i] >= 0 &&x+dx[i] < N) {
+            if (ny >= 0 && ny < M && nx >= 0 && nx < N) {
                 // 새로운 위치가 '방문되지 않았는지, 탐색 중인 문자와 같은지' 확인.
-                if(!visited[y+dy[i]][x+dx[i]] && map[y+dy[i]][x+dx[i]] == word) {
-                    dfs(y+dy[i], x+dx[i], word);
+                if(!visited[ny][nx] && map[ny][nx] == word) {
+                    dfs(ny, nx, word);
                 }
             }
         }
